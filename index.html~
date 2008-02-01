@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <link href="http://www.xmltwig.com/favicon.ico" rel="Shortcut Icon" type="image/x-icon"/>
+    <link href="/css/main.css" rel="stylesheet" title="Main Style" type="text/css"/>
+    <link href="/css/full.css" rel="alternate stylesheet" title="Print Style (no menu)" type="text/css"/>
+    <meta content="main" name="template"/>
+    <title>
+       HTML::TreeBuilder::XPath 
+    </title>
+    <script language="JavaScript">
+      <!--
+      function changeSheets(whichSheet)
+        { whichSheet=whichSheet-1;
+          if(document.styleSheets)
+            { var c = document.styleSheets.length;
+              for(var i=0;i<c;i++)
+                { if(i!=whichSheet)
+                    { document.styleSheets[i].disabled=true; }
+                  else
+                    { document.styleSheets[i].disabled=false; }
+                }
+            }
+        }
+    //-->
+    </script>
+  </head>
+  <body>
+    <div class="header">
+      <p class="tagline">XML, the Perl Way</p>
+    </div>
+    <div class="main_block">
+      <!-- left column -->
+      <div class="left_column">
+        <a href="/">Home</a>
+        <a href="/xmltwig">XML::Twig</a>
+        <a href="/module/">Modules</a>
+        <a href="/talk/">Talks</a>
+        <a href="/article/">Articles</a>
+        <a href="/tutorial/">Tutorials</a>
+        <a href="/report/">Reports</a>
+        <a href="/tool/">Tools</a>
+        <a href="/pgc/">PGC</a>
+        <a href="/mirod/">mirod</a>
+        <a class="print_link" href="JavaScript:changeSheets(2)">print</a>
+      </div>
+      <!-- main content -->
+      <div class="content">
+        <h1>HTML::TreeBuilder::XPath</h1>
+        <p>HTML::TreeBuilder::XPath uses <a href="../xml-xpathengine">XML::XPathEngine</a> to add
+        <a href="http://www.w3.org/TR/xpath.html">XPath</a> to 
+        <a href="http://search.cpan.org/dist/HTML-Tree/">HTML::TreeBuilder</a>. If you 
+        <tt>use HTML::TreeBuilder::XPath</tt> instead of <tt>HTML::TreeBuilder</tt> then you get to use 
+        methods like <tt>findnodes</tt>, as in <tt>my @nodes= $root-&gt;findnodes( '&lt;xpath_expression&gt;')</tt>
+        or <tt>findvalue</tt> with the full power of XPath..
+        </p>
+        <div class="links">
+          <p>
+            <b>Links:</b> [<span class="doc_html"><a href="Tree-DAG_Node-XPath-0.08/tree-dag_node-xpath.html">documentation</a></span>] [<span class="tar"><a href="Tree-DAG_Node-XPath-0.08.tar.gz">Tree-DAG_Node-XPath-0.08.tar.gz</a></span>] [<span class="link_to_dir"><a href="Tree-DAG_Node-XPath-0.08">browse</a></span>] [<span class="readme"><a href="Tree-DAG_Node-XPath-0.08/README">README</a></span>]</p> </div> </div>
+    </div>
+    <div class="footer">
+      <hr/>
+      <p align="center">
+       Last Updated: Sat Oct 15 14:27:28 2005<br/>
+       copyright © 1998-2005 - Michel Rodriguez - <a href="http://www.xmltwig.com">www.xmltwig.com</a></p>
+    </div>
+  </body>
+</html>

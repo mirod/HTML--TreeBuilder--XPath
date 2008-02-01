@@ -1,0 +1,41 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+ 
+use HTML::TreeBuilder::XPath;
+
+my $doc=q{
+<html>
+  <head>
+    <script lang="javascript">if( 1 < 2 && 3 < 4) { return ""; }</script>
+    <script lang="javascript"><![CDATA[if( 1 < 2 && 3 < 4) { return ""; }]]></script>
+    <script lang="javascript">if( 1) { return ""; }</script>
+  </head>
+  <body>
+     <p>&amp; &amp; &lt; &gt; &amp; été été été ""</p>
+     <p>&amp; &amp &lt &gt &amp <b>&eacute;t&eacute</b> &#xe9;t&#xe9 &#233;t&#233</p>
+     <hr>
+     <p>foo bar baz</p>
+ </body>
+};
+
+{
+my $h= HTML::TreeBuilder::XPath->new;
+$h->parse( $doc);
+#print $h->as_HTML;
+}
+
+
+{
+my $h= HTML::TreeBuilder::XPath->new;
+$h->parse( $doc);
+#print $h->as_XML;
+}
+{
+my $h= HTML::TreeBuilder::XPath->new;
+$h->parse( $doc);
+print $h->as_XML_clean;
+}
+
+
