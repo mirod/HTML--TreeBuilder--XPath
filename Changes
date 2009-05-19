@@ -1,10 +1,19 @@
 $Id: /html-treebuilder-xpath/Changes 40 2006-05-15T07:42:34.182385Z mrodrigu  $
 Revision history for Perl extension HTML::TreeBuilder::XPath.
 
+version 0.11
+date:
+# minor bug fixes
+added: mention $tree->delete in docs to warn about memory leaks
+fix:   pod fix (https://rt.cpan.org/Ticket/Display.html?id=46203)
+
 version: 0.10
-date: 2007-11-27
+date: 2008-02-11
 # minor feature addition
-new: as_XML_clean method, a replacement for HTML::TreeBuilder as_XML
+new: find_nodes_as_strings method which returns a list of strings
+new: findvalues method which returns a list of values  
+new: as_XML_compact method, a replacement for HTML::TreeBuilder as_XML
+new: as_XML_indented method, same as as_XML_compact, except indents the output
    
 
 version: 0.09
@@ -18,6 +27,7 @@ fix:
 fix:     a bug where the as_XML method on text nodes returned non escaped
          text, spotted by Tatsuhiko Miyagawa
          at the moment the output is quite ugly, as ugly as HTML::Element as_XM.
+
 
 version: 0.08
 date: 2007-01-20
