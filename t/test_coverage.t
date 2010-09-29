@@ -34,7 +34,7 @@ use utf8;
 
 { my $html=qq{<html><head></head><body><img height="5" width="6" id="i1" /><img height="7" width="6" id="i2" /></body></html>};
   my $tree= HTML::TreeBuilder->new_from_content( $html);
-  is( $tree->findvalue( '//img[@* > 6]/@id'), 'i2', '//img[@* > 6]/@id');
+  is( $tree->findvalue( '//img[@* = "7"]/@id'), 'i2', '//img[@* = "7"]/@id');
   is( $tree->findvalue( '//img[@height < @width]/@id'), 'i1', '//img[@height < @width]/@id');
   is( $tree->findvalue( '//img[@height < @width]/@id'), 'i1', '//img[@height < @width]/@id');
   is( $tree->findvalue( '//img[@height < @width]/@id[1]'), 'i1', '//img[@height < @width]/@id[1]');
