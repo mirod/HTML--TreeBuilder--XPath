@@ -1,11 +1,19 @@
 $Id: /html-treebuilder-xpath/Changes 40 2006-05-15T07:42:34.182385Z mrodrigu  $
 Revision history for Perl extension HTML::TreeBuilder::XPath.
 
+version 0.12
+date:   2010-09-29
+# minor bug fix
+fix:    added getLocalName on elements
+        see https://rt.cpan.org/Public/Bug/Display.html?id=61746
+        found and fixed by Miyagawa
+added:  a few tests
+
 version 0.11
-date:
+date:  	2009-05-19
 # minor bug fixes
-added: mention $tree->delete in docs to warn about memory leaks
-fix:   pod fix (https://rt.cpan.org/Ticket/Display.html?id=46203)
+added:  mention $tree->delete in docs to warn about memory leaks
+fix:    pod fix (https://rt.cpan.org/Ticket/Display.html?id=46203)
 
 version: 0.10
 date: 2008-02-11
