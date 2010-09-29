@@ -123,8 +123,8 @@
 .rm #[ #] #H #V #F C
 .\" ========================================================================
 .\"
-.IX Title "HTML::TreeBuilder::XPath 3pm"
-.TH HTML::TreeBuilder::XPath 3pm "2009-05-07" "perl v5.10.0" "User Contributed Perl Documentation"
+.IX Title "XPath_with_as_XML_clean 3pm"
+.TH XPath_with_as_XML_clean 3pm "2008-02-05" "perl v5.10.0" "User Contributed Perl Documentation"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -142,7 +142,6 @@ HTML::TreeBuilder::XPath \- add XPath support to HTML::TreeBuilder
 \&
 \&  my $p= $html\->findnodes( \*(Aq//p[@id="toto"]\*(Aq)\->[0];
 \&  my $link_texts= $p\->findvalue( \*(Aq./a\*(Aq); # the texts of all a elements in $p
-\&  $tree\->delete; # to avoid memory leaks, if you parse many HTML documents
 .Ve
 .SH "DESCRIPTION"
 .IX Header "DESCRIPTION"
@@ -170,11 +169,6 @@ or a \f(CW\*(C`Tree::XPathEngine::Number\*(C'\fR object. If the path returns a N
 for each of the objects stringification is overloaded, so you can just
 print the value found, or manipulate it in the ways you would a normal
 perl value (e.g. using regular expressions).
-.SS "findvalues ($path)"
-.IX Subsection "findvalues ($path)"
-Returns the values of the matching nodes as a list. This is mostly the same
-as findnodes_as_strings, except that the elements of the list are objects
-(with overloaded stringification) instead of plain strings.
 .SS "exists ($path)"
 .IX Subsection "exists ($path)"
 Returns true if the given path exists.
@@ -190,19 +184,18 @@ XML::XPathEngine::Number, or XML::XPathEngine::Boolean. It should always
 return something \- and you can use \->\fIisa()\fR to find out what it returned. If
 you need to check how many nodes it found you should check \f(CW$nodeset\fR\->size.
 See XML::XPathEngine::NodeSet.
-.SS "as_XML_compact"
-.IX Subsection "as_XML_compact"
+.SS "as_XML_clean ($optional_indent_level)"
+.IX Subsection "as_XML_clean ($optional_indent_level)"
 HTML::TreeBuilder's \f(CW\*(C`as_XML\*(C'\fR output is not really nice to look at, so
 I added a new method, that can be used as a simple replacement for it. 
 It escapes only the '<', '>' and '&' (plus '"' in attribute values), and
 wraps \s-1CDATA\s0 elements in \s-1CDATA\s0 sections.
 .PP
-Note that the \s-1XML\s0 is actually not garanteed to be valid at this point. Nothing
-is done about the encoding of the string. Patches or just ideas of how it could
-work are welcome.
-.SS "as_XML_indented"
-.IX Subsection "as_XML_indented"
-Same as as_XML, except that the output is indented.
+The \f(CW$optional_indent_level\fR defaults to the level in the original \s-1HTML\s0
+document (ie you probably don't have to use it)
+.PP
+This method is currently in alpha state. Ping me if you want other options added
+to it (wrapping?).
 .SH "SEE ALSO"
 .IX Header "SEE ALSO"
 HTML::TreeBuilder

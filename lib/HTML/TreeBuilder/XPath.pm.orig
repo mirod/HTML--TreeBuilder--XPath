@@ -7,7 +7,7 @@ use warnings;
 
 use vars qw($VERSION);
 
-$VERSION = '0.11';
+$VERSION = '0.10';
 
 my %CHAR2DEFAULT_ENT= ( '&' => '&amp;', '<' => '&lt;', '>' => '&gt;', '"' => '&quot;');
 my %NUM2DEFAULT_ENT= ( '38' => 'amp', '60' => 'lt', '62' => 'gt', '"' => '&quot;');
@@ -518,10 +518,6 @@ sub getParentNode   { return (); }
 sub getChildNodes   { my @content= ( $_[0]->{_root}); return wantarray ? @content : \@content; }
 sub getAttributes   { return []        }
 sub isDocumentNode  { return 1         }
-sub getRootNode     { return $_[0]     }
-sub getName         { return           }
-sub getNextSibling  { return           }
-sub getPreviousSibling { return        }
 
 # added to provide element-like methods to root, for use by cmp
 sub lineage {  return ($_[0]); }
@@ -531,7 +527,6 @@ sub cmp { return $_[1]->isa( ' HTML::TreeBuilder::XPath::Root') ? 0 : 1; }
 1;
 
 __END__
-
 =head1 NAME
 
 HTML::TreeBuilder::XPath - add XPath support to HTML::TreeBuilder
@@ -546,7 +541,6 @@ HTML::TreeBuilder::XPath - add XPath support to HTML::TreeBuilder
 
   my $p= $html->findnodes( '//p[@id="toto"]')->[0];
   my $link_texts= $p->findvalue( './a'); # the texts of all a elements in $p
-  $tree->delete; # to avoid memory leaks, if you parse many HTML documents 
   
   
 =head1 DESCRIPTION

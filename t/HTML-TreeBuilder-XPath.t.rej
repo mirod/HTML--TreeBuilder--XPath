@@ -1,0 +1,17 @@
+***************
+*** 3,9 ****
+  
+  #########################
+  
+- use Test::More tests => 19;
+  BEGIN { use_ok('HTML::TreeBuilder::XPath') };
+  
+  #########################
+--- 3,9 ----
+  
+  #########################
+  
++ use Test::More tests => 25;
+  BEGIN { use_ok('HTML::TreeBuilder::XPath') };
+  
+  #########################

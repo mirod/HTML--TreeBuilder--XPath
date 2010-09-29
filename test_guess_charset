@@ -1,0 +1,21 @@
+
+sub charset
+  { my( $root)= @_;
+    #my $root= $node->root;
+    my $charset; 
+    # get the XML declaration first (need pis to be stored)
+    if( my $xml_decl= first { $_->{_tag} eq '~pi' } $root->content_list)
+      { if( $xml_decl->{text}=~ m{encoding\s*=\s*(["'])(.*?)\1})
+          { $charset->{declaration}= $2; }
+      }
+
+    if( my $head= first { lc( $_->{_tag}) eq 'head' } $root->content_list)
+      { if( my $meta= first { lc( $_->{_tag}) eq 'meta' && lc( $_->{http-equiv}) eq "content-type") }
+                            $root->content_list
+          )
+          { if( $meta->{content} && lc( $meta->{content})=~ m{charset\s*=\s*([\w-]*))
+              { charset->{meta}= $1; }
+          }
+
+    return $charset;
+  } 

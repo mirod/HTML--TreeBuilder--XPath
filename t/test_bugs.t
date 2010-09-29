@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use HTML::TreeBuilder::XPath;
-use Test::More tests => 4;
+use Test::More tests => 6;
 
 use utf8;
 
@@ -13,9 +13,9 @@ my %minimal_escapes   = ( '&' => '&amp;', '>' =>  '&gt;', '<' => '&lt;', );
 
 my $text= '& & < > & été été été';
 
-#(my $as_xml_clean= $text)   =~ s{(.)}{$minimal_escapes{$1} || $1}eg;
+(my $as_xml= $text)   =~ s{(.)}{$minimal_escapes{$1} || $1}eg;
 #(my $as_xml_default= $text) =~ s{(.)}{$numerical_escapes{$1} || $1}eg;
-(my $as_xml= $text) =~ s{(.)}{$numerical_escapes{$1} || $1}eg;
+#(my $as_xml= $text) =~ s{(.)}{$numerical_escapes{$1} || $1}eg;
 
 my $html=qq{<html>
              <head></head>
@@ -28,6 +28,7 @@ my $html=qq{<html>
 my $tree  = HTML::TreeBuilder->new_from_content( $html);
 
 foreach my $p ($tree->findnodes("//p"))
-  { is( $p->as_XML, "<p>$as_xml</p>\n", "p as_XML (default)");
-    is( ($p->findnodes( './node()[1]'))[0]->as_XML, $as_xml, "text node as_XML()");
+  { is( $p->as_XML_indented, "<p>$as_xml</p>\n", "p as_XML_indented");
+    is( $p->as_XML_compact, "<p>$as_xml</p>", "p as_XML_compact");
+    is( ($p->findnodes( './node()[1]'))[0]->as_XML_indented, $as_xml, "text node as_XML()");
   }

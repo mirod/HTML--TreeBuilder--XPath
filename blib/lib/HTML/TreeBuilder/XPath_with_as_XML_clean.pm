@@ -1,20 +1,20 @@
 package HTML::TreeBuilder::XPath;
 
-use List::Util qw( first);
 
 use strict;
 use warnings;
 
 use vars qw($VERSION);
 
-$VERSION = '0.11';
+$VERSION = '0.10';
 
-my %CHAR2DEFAULT_ENT= ( '&' => '&amp;', '<' => '&lt;', '>' => '&gt;', '"' => '&quot;');
-my %NUM2DEFAULT_ENT= ( '38' => 'amp', '60' => 'lt', '62' => 'gt', '"' => '&quot;');
+my %CHAR2DEFAULT_ENT= ( '&' => '&amp;', '<' => '&lt;', '>' => '&gt;', '"' => '&quote;');
+my %NUM2DEFAULT_ENT= ( '38' => 'amp', '60' => 'lt', '62' => 'gt', '"' => '&quote;');
 
 package HTML::TreeBuilder::XPath;
 
 use base( 'HTML::TreeBuilder');
+
 
 package HTML::TreeBuilder::XPath::Node;
 
@@ -30,9 +30,6 @@ sub getChildNodes { return wantarray ? () : []; }
 sub getFirstChild { return undef; }
 sub getLastChild { return undef; }
 
-# need to do a complete look_down each time, as the id could have been changed 
-# without any object being involved, hence without a potential cache being
-# up to date
 sub getElementById 
   { my ($self, $id) = @_;
     return scalar $self->look_down( id => $id);
@@ -108,12 +105,10 @@ use XML::XPathEngine;
     }
 }
 
-
 sub findnodes            { my( $elt, $path)= @_; return xp->findnodes(            $path, $elt); }
 sub findnodes_as_string  { my( $elt, $path)= @_; return xp->findnodes_as_string(  $path, $elt); }
 sub findnodes_as_strings { my( $elt, $path)= @_; return xp->findnodes_as_strings( $path, $elt); }
 sub findvalue            { my( $elt, $path)= @_; return xp->findvalue(            $path, $elt); }
-sub findvalues           { my( $elt, $path)= @_; return xp->findvalues(           $path, $elt); }
 sub exists               { my( $elt, $path)= @_; return xp->exists(               $path, $elt); }
 sub find_xpath           { my( $elt, $path)= @_; return xp->find(                 $path, $elt); }
 sub matches              { my( $elt, $path)= @_; return xp->matches( $elt, $path, $elt);        }
@@ -212,120 +207,65 @@ sub _child_as_object
     return $elt_or_text;
   }
 
-sub toString { return shift->as_XML( @_); }
+sub toString { return shift->as_XML_clean( @_); }
 
 # produces better looking XML
-{
-  no warnings 'redefine'; 
-  sub as_XML_compact
-    { my( $node, $opt)= @_;
+{ my( $indent, %return_before_endtag);
+  BEGIN 
+    { $indent= '  '; 
+      %return_before_endtag= map { $_ => 1 } qw(html head body script div table tr form ol ul);
+    }
+ 
+  sub as_XML_clean
+    { my( $node, $indent_level)= @_;
+
+      my $xml= '';
+      my $wrapping_nl= "\n"; 
+
+      if( !defined( $indent_level)) { $indent_level = 0; $wrapping_nl= ''; }
+      
       my $name = $node->{'_tag'};
-      if( $name eq '~literal')     { return _xml_escape_text( $node->{text});                     }
+      if( $HTML::Tagset::isKnown{lc $name} && !$HTML::Tagset::isPhraseMarkup{lc $name} && $indent_level > 0) 
+        { $xml.= $wrapping_nl . ($indent x $indent_level); }
 
-      if( $name eq '~declaration') { return '<!'   . _xml_escape_text( $node->{text})    . ">";   }
-      if( $name eq '~pi')          { return '<?'   . _xml_escape_text( $node->{text})    . '?>';  }
-      if( $name eq '~comment')     { return '<!--' . _xml_escape_comment( $node->{text}) . '-->'; }
-
-      my $lc_name= lc $name;
-
-      my $xml= $node->_start_tag;
-
-      if( $HTML::Tagset::isCDATA_Parent{$lc_name})
-        { my $content= $node->{_content} || '';
+      if(    $name eq '~literal')     { $xml= _xml_escape_text( $node->{text});                    }
+      elsif( $name eq '~declaration') { $xml= '<!' . _xml_escape_text( $node->{text}) . '>';       }
+      elsif( $name eq '~pi')          { $xml= '<?' . _xml_escape_text( $node->{text}) . '?>';      }
+      elsif( $name eq '~comment')     { $xml= '<--' . _xml_escape_comment( $node->{text}) . '-->'; }
+      elsif( $HTML::Tagset::isCDATA_Parent{lc $name})
+        { $xml.= $node->_start_tag;
+          my $content= $node->{_content} || '';
           if( ref $content eq 'ARRAY' || $content->isa( 'ARRAY'))
-            { $xml .= _xml_escape_cdata( join( '', @$content), $opt); }
-          else
-            { $xml .= $content; }
+            { $xml .= _xml_escape_cdata( join( '', @$content)); }
+          if( $return_before_endtag{lc $name}) { $xml.= "\n" . ($indent x $indent_level); }
         }
       else
         { # start tag
+          $xml.= $node->_start_tag;
+          my $child_indent_level= $HTML::Tagset{lc $name} ? $indent_level : $indent_level+1;
           foreach my $child ($node->content_list) 
-            { if( ref $child) { $xml .= $child->as_XML_compact(); }
+            { if( ref $child) { $xml .= $child->as_XML_clean( $child_indent_level); }
               else            { $xml .=  _xml_escape_text( $child); }
             }
+          if( $return_before_endtag{lc $name}) { $xml.= "\n" . ($indent x $indent_level); }
         }
-          $xml.= "</$name>" unless $HTML::Tagset::emptyElement{$lc_name};
+      $xml .="</$name>" unless $HTML::Tagset::emptyElement{lc $name};
+      if( $indent_level == 0) { $xml .= $wrapping_nl; }
       return $xml;
     }
 }
 
-    
-
-{ my %phrase_name;    # all phrase tags, + literals (those are not indented)
-  my %extra_newline;  # tags that get an extra newline before the end tag
-  my $default_indent; # 2 spaces, change with the 'indent' option
-  BEGIN 
-    { %phrase_name= %HTML::Tagset::isPhraseMarkup;
-      $phrase_name{'~literal'}= 1;
-      $default_indent= '  ';
-      %extra_newline= map { $_ => 1 } qw(html head body script div table tbody thead tfoot tr form dl ol ul);
-    }
-
-  sub as_XML_indented
-    { my( $node, $opt)= @_;
-
-
-      my $name = $node->{'_tag'};
-      my $lc_name= lc $name;
-
-      if( $name eq '~literal')     { return _xml_escape_text( $node->{text});                     }
-      if( $name eq '~declaration') { return '<!'   . _xml_escape_text( $node->{text})    . ">\n"; }
-
-
-      if( $name eq '~pi')          { return '<?'   . _xml_escape_text( $node->{text})    . '?>';  }
-      if( $name eq '~comment')     { return '<!--' . _xml_escape_comment( $node->{text}) . '-->'; }
-      
-      my $xml;
-      my $pre_tag_indent='';
-      if(!$phrase_name{$lc_name}) { $pre_tag_indent=  "\n" . ($opt->{indent} || $default_indent) x ($opt->{indent_level}||0); }
-      if( $opt->{indent_level}) { $xml .= $pre_tag_indent; }
-
-      $xml.= $node->_start_tag();
-
-      my $content='';
-
-      if( $HTML::Tagset::isCDATA_Parent{$lc_name})
-        { my $content= $node->{_content} || '';
-          if( ref $content && (ref $content eq 'ARRAY' || $content->isa( 'ARRAY') ))
-            { $content= _xml_escape_cdata( join( '', @$content), $opt); }
-        }
-      else
-        { 
-          my %child_opt= %$opt;
-          $child_opt{indent_level}++;
-          foreach my $child ($node->content_list) 
-            { if( ref $child) { $content .= $child->as_XML_indented( \%child_opt ); }
-              else            { $content .=  _xml_escape_text( $child);             }
-            }
-        }
-      $xml .= $content;
-
-      if( $extra_newline{$lc_name} && $content ne '' ) { $xml.= $pre_tag_indent; }
-      $xml.= "</$name>" unless $HTML::Tagset::emptyElement{$lc_name};
-      $xml .="\n" if( !$opt->{indent_level});
-     
-      return $xml;
-    }
-}
 
 sub _start_tag
   { my( $node)= @_;
     my $name = $node->{'_tag'};
     my $start_tag.= "<$name";
-    foreach my $att_name (sort keys %$node) 
-      { next if( (!length $att_name) ||  ($att_name=~ m{^_}) || ($att_name eq '/') );
-        my $well_formed_att_name= well_formed_name( $att_name);
-        $start_tag .= qq{ $well_formed_att_name="} . _xml_escape_attribute_value( $node->{$att_name}) . qq{"};
+    foreach my $att (sort keys %$node) 
+      { next if( (!length $att) ||  ($att=~ m{^_}) || ($att eq '/') );
+        $start_tag .= qq{ $att="} . _xml_escape_attribute_value $node->{$att} . qq{"};
       }
     $start_tag.= $HTML::Tagset::emptyElement{lc $name} ? " />" : ">";
     return $start_tag;
-  }
-
-sub well_formed_name
-  { my( $name)= @_;
-    $name=~ s{[^\w:_-]+}{_}g;
-    if( $name=~ m{^\d}) { $name= "a$name"; }
-    return $name;
   }
 
 sub _indent_level
@@ -333,34 +273,7 @@ sub _indent_level
     my $level= scalar grep { !$HTML::Tagset::isPhraseMarkup{lc $_->{_tag}} } $node->lineage;
     return $level;
   }
-
-{ my( $indent, %extra_newline, $nl);
-  BEGIN 
-    { $indent= '  '; 
-      $nl= "\n";
-      %extra_newline= map { $_ => 1 } qw(html head body script div table tr form ol ul);
-    }
    
-  sub indents
-    { my( $opt, $name)= @_;
-      my $indents= { pre_start_tag => '', post_start_tag => '', pre_end_tag => '', post_end_tag => ''};
-      if( $opt->{indented})
-        { my $indent_level= $opt->{indent_level};
-          my $wrapping_nl= $nl; 
-          if( !defined( $indent_level)) { $indent_level = 0; $wrapping_nl= ''; }
-          if( $HTML::Tagset::isKnown{lc $name} && !$HTML::Tagset::isPhraseMarkup{lc $name} && $indent_level > 0) 
-            { $indents->{pre_start_tag}= $wrapping_nl . ($indent x $indent_level); }
-          if( $extra_newline{lc $name})
-            { $indents->{post_start_tag}= $nl; 
-              $indents->{pre_end_tag}= $nl . ($indent x $indent_level);
-            }
-          if( $indent_level == 0) 
-            { $indents->{post_end_tag} = $wrapping_nl; }
-        }
-      return $indents;
-    }
-}
-
     
 sub _xml_escape_attribute_value
   { my( $text)= @_;
@@ -382,13 +295,11 @@ sub _xml_escape_comment
   }
 
 sub _xml_escape_cdata
-  { my( $text, $opt)= @_;
-    if( $opt->{force_escape_cdata} || $text=~ m{[<&]})
-      { $text=~ s{^\s*\Q<![CDATA[}{}s;
-        $text=~ s{\Q]]>\E\s*$}{}s;
-        $text=~ s{]]>}{]]&#62;}g; # can't have]]> in CDATA
-        $text=  "<![CDATA[$text]]>";
-      }
+  { my( $text)= @_;
+    $text=~ s{^\s*\Q<![CDATA[}{}s;
+    $text=~ s{\Q]]>\E\s*$}{}s;
+    $text=~ s{]]>}{]]&#62;}g; # can't have]]> in CDATA
+    $text=  "<![CDATA[$text]]>";
     return $text;
   }
 
@@ -409,12 +320,19 @@ sub as_XML
     if( $node->{_parent} && $node->{_parent}->{_tag} eq 'script')
       { $content=~ s{(&\w+;)}{HTML::Entities::decode($1)}eg; }
     else
+      { HTML::Element::_xml_escape($content); }
+    return $content;
+  }
+
+sub as_XML_clean
+  { my( $node, $entities)= @_;
+    my $content= $node->{_content};
+    if( $node->{_parent} && $node->{_parent}->{_tag} eq 'script')
+      { $content=~ s{(&\w+;)}{HTML::Entities::decode($1)}eg; }
+    else
       { $content= HTML::Element::_xml_escape_text($content); }
     return $content;
   }
-*as_XML_compact  = *as_XML;
-*as_XML_indented = *as_XML;
-
 
 sub getPreviousSibling
   { my $self= shift;
@@ -465,7 +383,7 @@ sub getLocalName    { (my $name= $_[0]->{_name}) =~ s{^.*:}{}; $name; }
 sub string_value    { return $_[0]->{_value}; }
 sub to_number       { return XML::XPathEngine::Number->new( $_[0]->{_value}); }
 sub isAttributeNode { 1 }
-sub toString        { return qq{ $_[0]->{_name}="$_[0]->{_value}"}; }
+sub toString        { return qq{$_[0]->{_name}="$_[0]->{_value}"}; }
 
 # awfully inefficient, but hopefully this is called only for weird (read test-case) queries
 sub getPreviousSibling
@@ -518,10 +436,6 @@ sub getParentNode   { return (); }
 sub getChildNodes   { my @content= ( $_[0]->{_root}); return wantarray ? @content : \@content; }
 sub getAttributes   { return []        }
 sub isDocumentNode  { return 1         }
-sub getRootNode     { return $_[0]     }
-sub getName         { return           }
-sub getNextSibling  { return           }
-sub getPreviousSibling { return        }
 
 # added to provide element-like methods to root, for use by cmp
 sub lineage {  return ($_[0]); }
@@ -531,7 +445,6 @@ sub cmp { return $_[1]->isa( ' HTML::TreeBuilder::XPath::Root') ? 0 : 1; }
 1;
 
 __END__
-
 =head1 NAME
 
 HTML::TreeBuilder::XPath - add XPath support to HTML::TreeBuilder
@@ -546,7 +459,6 @@ HTML::TreeBuilder::XPath - add XPath support to HTML::TreeBuilder
 
   my $p= $html->findnodes( '//p[@id="toto"]')->[0];
   my $link_texts= $p->findvalue( './a'); # the texts of all a elements in $p
-  $tree->delete; # to avoid memory leaks, if you parse many HTML documents 
   
   
 =head1 DESCRIPTION
@@ -581,12 +493,6 @@ for each of the objects stringification is overloaded, so you can just
 print the value found, or manipulate it in the ways you would a normal
 perl value (e.g. using regular expressions).
 
-=head2 findvalues ($path)
-
-Returns the values of the matching nodes as a list. This is mostly the same
-as findnodes_as_strings, except that the elements of the list are objects
-(with overloaded stringification) instead of plain strings.
-
 =head2 exists ($path)
 
 Returns true if the given path exists.
@@ -605,20 +511,18 @@ return something - and you can use ->isa() to find out what it returned. If
 you need to check how many nodes it found you should check $nodeset->size.
 See L<XML::XPathEngine::NodeSet>.
 
-=head2 as_XML_compact
+=head2 as_XML_clean ($optional_indent_level)
 
 HTML::TreeBuilder's C<as_XML> output is not really nice to look at, so
 I added a new method, that can be used as a simple replacement for it. 
 It escapes only the '<', '>' and '&' (plus '"' in attribute values), and
 wraps CDATA elements in CDATA sections.
 
-Note that the XML is actually not garanteed to be valid at this point. Nothing
-is done about the encoding of the string. Patches or just ideas of how it could
-work are welcome.
+The C<$optional_indent_level> defaults to the level in the original HTML
+document (ie you probably don't have to use it)
 
-=head2 as_XML_indented 
-
-Same as as_XML, except that the output is indented.
+This method is currently in alpha state. Ping me if you want other options added
+to it (wrapping?).
 
 =head1 SEE ALSO
 
