@@ -1,13 +1,14 @@
 package HTML::TreeBuilder::XPath;
 
 use List::Util qw( first);
+use Scalar::Util ();
 
 use strict;
 use warnings;
 
 use vars qw($VERSION);
 
-$VERSION = '0.12';
+$VERSION = '0.13';
 
 my %CHAR2DEFAULT_ENT= ( '&' => '&amp;', '<' => '&lt;', '>' => '&gt;', '"' => '&quot;');
 my %NUM2DEFAULT_ENT= ( '38' => 'amp', '60' => 'lt', '62' => 'gt', '"' => '&quot;');
@@ -207,6 +208,7 @@ sub _child_as_object
         $elt_or_text= bless { _content => $elt_or_text, _parent => $elt, }, 
                             'HTML::TreeBuilder::XPath::TextNode'
                       ;
+        Scalar::Util::weaken($elt_or_text->{_parent});
       }
     if( ref $rank) { warn "rank is a ", ref( $rank), " elt_or_text is a ", ref( $elt_or_text); } 
     $elt_or_text->{_rank}= $rank; # used for sorting;
@@ -467,6 +469,7 @@ sub string_value    { return $_[0]->{_value}; }
 sub to_number       { return XML::XPathEngine::Number->new( $_[0]->{_value}); }
 sub isAttributeNode { 1 }
 sub toString        { return qq{ $_[0]->{_name}="$_[0]->{_value}"}; }
+sub getAttributes   {  return $_[0]->{_elt}->getAttributes; }
 
 # awfully inefficient, but hopefully this is called only for weird (read test-case) queries
 sub getPreviousSibling

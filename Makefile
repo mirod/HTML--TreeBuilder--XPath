@@ -1,7 +1,7 @@
 # This Makefile is for the HTML::TreeBuilder::XPath extension to perl.
 #
 # It was generated automatically by MakeMaker version
-# 6.56 (Revision: 65600) from the contents of
+# 6.57_05 (Revision: 65705) from the contents of
 # Makefile.PL. Don't edit this file, edit Makefile.PL instead.
 #
 #       ANY CHANGES MADE HERE WILL BE LOST!
@@ -12,7 +12,7 @@
 #   MakeMaker Parameters:
 
 #     ABSTRACT_FROM => q[lib/HTML/TreeBuilder/XPath.pm]
-#     AUTHOR => q[Michel Rodriguez <mrodrigu@localdomain>]
+#     AUTHOR => [q[Michel Rodriguez <mrodrigu@localdomain>]]
 #     BUILD_REQUIRES => {  }
 #     LICENSE => q[perl]
 #     NAME => q[HTML::TreeBuilder::XPath]
@@ -24,7 +24,7 @@
 
 # --- MakeMaker const_config section:
 
-# These definitions are from config.sh (via /usr/lib/perl/5.10/Config.pm).
+# These definitions are from config.sh (via /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1/i686-linux/Config.pm).
 # They may have been overridden via Makefile.PL or on the command line.
 AR = ar
 CC = cc
@@ -35,19 +35,19 @@ DLSRC = dl_dlopen.xs
 EXE_EXT = 
 FULL_AR = /usr/bin/ar
 LD = cc
-LDDLFLAGS = -shared -O2 -g -L/usr/local/lib -fstack-protector
+LDDLFLAGS = -shared -O2 -L/usr/local/lib -fstack-protector
 LDFLAGS =  -fstack-protector -L/usr/local/lib
-LIBC = /lib/libc-2.11.1.so
+LIBC = 
 LIB_EXT = .a
 OBJ_EXT = .o
 OSNAME = linux
-OSVERS = 2.6.24-27-server
+OSVERS = 2.6.38-8-generic-pae
 RANLIB = :
-SITELIBEXP = /usr/local/share/perl/5.10.1
-SITEARCHEXP = /usr/local/lib/perl/5.10.1
+SITELIBEXP = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/site_perl/5.14.1
+SITEARCHEXP = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/site_perl/5.14.1/i686-linux
 SO = so
-VENDORARCHEXP = /usr/lib/perl5
-VENDORLIBEXP = /usr/share/perl5
+VENDORARCHEXP = 
+VENDORLIBEXP = 
 
 
 # --- MakeMaker constants section:
@@ -69,60 +69,60 @@ INST_BIN = blib/bin
 INST_LIB = blib/lib
 INST_MAN1DIR = blib/man1
 INST_MAN3DIR = blib/man3
-MAN1EXT = 1p
-MAN3EXT = 3pm
+MAN1EXT = 1
+MAN3EXT = 3
 INSTALLDIRS = site
 DESTDIR = 
 PREFIX = $(SITEPREFIX)
-PERLPREFIX = /usr
-SITEPREFIX = /usr/local
-VENDORPREFIX = /usr
-INSTALLPRIVLIB = /usr/share/perl/5.10
+PERLPREFIX = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1
+SITEPREFIX = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1
+VENDORPREFIX = 
+INSTALLPRIVLIB = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1
 DESTINSTALLPRIVLIB = $(DESTDIR)$(INSTALLPRIVLIB)
-INSTALLSITELIB = /usr/local/share/perl/5.10.1
+INSTALLSITELIB = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/site_perl/5.14.1
 DESTINSTALLSITELIB = $(DESTDIR)$(INSTALLSITELIB)
-INSTALLVENDORLIB = /usr/share/perl5
+INSTALLVENDORLIB = 
 DESTINSTALLVENDORLIB = $(DESTDIR)$(INSTALLVENDORLIB)
-INSTALLARCHLIB = /usr/lib/perl/5.10
+INSTALLARCHLIB = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1/i686-linux
 DESTINSTALLARCHLIB = $(DESTDIR)$(INSTALLARCHLIB)
-INSTALLSITEARCH = /usr/local/lib/perl/5.10.1
+INSTALLSITEARCH = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/site_perl/5.14.1/i686-linux
 DESTINSTALLSITEARCH = $(DESTDIR)$(INSTALLSITEARCH)
-INSTALLVENDORARCH = /usr/lib/perl5
+INSTALLVENDORARCH = 
 DESTINSTALLVENDORARCH = $(DESTDIR)$(INSTALLVENDORARCH)
-INSTALLBIN = /usr/bin
+INSTALLBIN = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/bin
 DESTINSTALLBIN = $(DESTDIR)$(INSTALLBIN)
-INSTALLSITEBIN = /usr/local/bin
+INSTALLSITEBIN = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/bin
 DESTINSTALLSITEBIN = $(DESTDIR)$(INSTALLSITEBIN)
-INSTALLVENDORBIN = /usr/bin
+INSTALLVENDORBIN = 
 DESTINSTALLVENDORBIN = $(DESTDIR)$(INSTALLVENDORBIN)
-INSTALLSCRIPT = /usr/bin
+INSTALLSCRIPT = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/bin
 DESTINSTALLSCRIPT = $(DESTDIR)$(INSTALLSCRIPT)
-INSTALLSITESCRIPT = /usr/local/bin
+INSTALLSITESCRIPT = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/bin
 DESTINSTALLSITESCRIPT = $(DESTDIR)$(INSTALLSITESCRIPT)
-INSTALLVENDORSCRIPT = /usr/bin
+INSTALLVENDORSCRIPT = 
 DESTINSTALLVENDORSCRIPT = $(DESTDIR)$(INSTALLVENDORSCRIPT)
-INSTALLMAN1DIR = /usr/share/man/man1
+INSTALLMAN1DIR = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/man/man1
 DESTINSTALLMAN1DIR = $(DESTDIR)$(INSTALLMAN1DIR)
-INSTALLSITEMAN1DIR = /usr/local/man/man1
+INSTALLSITEMAN1DIR = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/man/man1
 DESTINSTALLSITEMAN1DIR = $(DESTDIR)$(INSTALLSITEMAN1DIR)
-INSTALLVENDORMAN1DIR = /usr/share/man/man1
+INSTALLVENDORMAN1DIR = 
 DESTINSTALLVENDORMAN1DIR = $(DESTDIR)$(INSTALLVENDORMAN1DIR)
-INSTALLMAN3DIR = /usr/share/man/man3
+INSTALLMAN3DIR = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/man/man3
 DESTINSTALLMAN3DIR = $(DESTDIR)$(INSTALLMAN3DIR)
-INSTALLSITEMAN3DIR = /usr/local/man/man3
+INSTALLSITEMAN3DIR = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/man/man3
 DESTINSTALLSITEMAN3DIR = $(DESTDIR)$(INSTALLSITEMAN3DIR)
-INSTALLVENDORMAN3DIR = /usr/share/man/man3
+INSTALLVENDORMAN3DIR = 
 DESTINSTALLVENDORMAN3DIR = $(DESTDIR)$(INSTALLVENDORMAN3DIR)
-PERL_LIB = /usr/share/perl/5.10
-PERL_ARCHLIB = /usr/lib/perl/5.10
+PERL_LIB = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1
+PERL_ARCHLIB = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1/i686-linux
 LIBPERL_A = libperl.a
 FIRST_MAKEFILE = Makefile
 MAKEFILE_OLD = Makefile.old
 MAKE_APERL_FILE = Makefile.aperl
 PERLMAINCC = $(CC)
-PERL_INC = /usr/lib/perl/5.10/CORE
-PERL = /usr/bin/perl
-FULLPERL = /usr/bin/perl
+PERL_INC = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1/i686-linux/CORE
+PERL = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/bin/perl5.14.1
+FULLPERL = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/bin/perl5.14.1
 ABSPERL = $(PERL)
 PERLRUN = $(PERL)
 FULLPERLRUN = $(FULLPERL)
@@ -135,9 +135,9 @@ PERM_DIR = 755
 PERM_RW = 644
 PERM_RWX = 755
 
-MAKEMAKER   = /usr/local/share/perl/5.10.1/ExtUtils/MakeMaker.pm
-MM_VERSION  = 6.56
-MM_REVISION = 65600
+MAKEMAKER   = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1/ExtUtils/MakeMaker.pm
+MM_VERSION  = 6.57_05
+MM_REVISION = 65705
 
 # FULLEXT = Pathname for extension directory (eg Foo/Bar/Oracle).
 # BASEEXT = Basename part of FULLEXT. May be just equal FULLEXT. (eg Oracle)
@@ -196,7 +196,7 @@ PM_TO_BLIB = XPath_with_as_XML_clean.pm \
 
 
 # --- MakeMaker platform_constants section:
-MM_Unix_VERSION = 6.56
+MM_Unix_VERSION = 6.57_05
 PERL_MALLOC_DEF = -DPERL_EXTMALLOC_DEF -Dmalloc=Perl_malloc -Dfree=Perl_mfree -Drealloc=Perl_realloc -Dcalloc=Perl_calloc
 
 
@@ -449,17 +449,17 @@ clean :: clean_subdirs
 	  core.[0-9] $(INST_ARCHAUTODIR)/extralibs.all \
 	  core.[0-9][0-9] $(BASEEXT).bso \
 	  pm_to_blib.ts core.[0-9][0-9][0-9][0-9] \
-	  $(BASEEXT).x $(BOOTSTRAP) \
-	  perl$(EXE_EXT) tmon.out \
-	  *$(OBJ_EXT) pm_to_blib \
-	  $(INST_ARCHAUTODIR)/extralibs.ld blibdirs.ts \
-	  core.[0-9][0-9][0-9][0-9][0-9] *perl.core \
-	  core.*perl.*.? $(MAKE_APERL_FILE) \
-	  perl $(BASEEXT).def \
-	  core.[0-9][0-9][0-9] mon.out \
-	  lib$(BASEEXT).def perlmain.c \
-	  perl.exe so_locations \
-	  $(BASEEXT).exp 
+	  MYMETA.yml $(BASEEXT).x \
+	  $(BOOTSTRAP) perl$(EXE_EXT) \
+	  tmon.out *$(OBJ_EXT) \
+	  pm_to_blib $(INST_ARCHAUTODIR)/extralibs.ld \
+	  blibdirs.ts core.[0-9][0-9][0-9][0-9][0-9] \
+	  *perl.core core.*perl.*.? \
+	  $(MAKE_APERL_FILE) perl \
+	  $(BASEEXT).def core.[0-9][0-9][0-9] \
+	  mon.out lib$(BASEEXT).def \
+	  perlmain.c perl.exe \
+	  so_locations $(BASEEXT).exp 
 	- $(RM_RF) \
 	  blib 
 	- $(MV) $(FIRST_MAKEFILE) $(MAKEFILE_OLD) $(DEV_NULL)
@@ -502,7 +502,7 @@ metafile : create_distdir
 	$(NOECHO) $(ECHO) '    directory:' >> META_new.yml
 	$(NOECHO) $(ECHO) '        - t' >> META_new.yml
 	$(NOECHO) $(ECHO) '        - inc' >> META_new.yml
-	$(NOECHO) $(ECHO) 'generated_by:       ExtUtils::MakeMaker version 6.56' >> META_new.yml
+	$(NOECHO) $(ECHO) 'generated_by:       ExtUtils::MakeMaker version 6.57_05' >> META_new.yml
 	$(NOECHO) $(ECHO) 'meta-spec:' >> META_new.yml
 	$(NOECHO) $(ECHO) '    url:      http://module-build.sourceforge.net/META-spec-v1.4.html' >> META_new.yml
 	$(NOECHO) $(ECHO) '    version:  1.4' >> META_new.yml
@@ -752,7 +752,7 @@ $(FIRST_MAKEFILE) : Makefile.PL $(CONFIGDEP)
 
 # --- MakeMaker makeaperl section ---
 MAP_TARGET    = perl
-FULLPERL      = /usr/bin/perl
+FULLPERL      = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/bin/perl5.14.1
 
 $(MAP_TARGET) :: static $(MAKE_APERL_FILE)
 	$(MAKE) $(USEMAKEFILE) $(MAKE_APERL_FILE) $@
@@ -803,7 +803,7 @@ ppd :
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="HTML::TreeBuilder" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="List::Util" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="XML::XPathEngine" VERSION="0.12" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="i486-linux-gnu-thread-multi-5.10" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="i686-linux-5.14" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '</SOFTPKG>' >> $(DISTNAME).ppd

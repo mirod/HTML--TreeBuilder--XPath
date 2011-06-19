@@ -1,12 +1,18 @@
 $Id: /html-treebuilder-xpath/Changes 40 2006-05-15T07:42:34.182385Z mrodrigu  $
 Revision history for Perl extension HTML::TreeBuilder::XPath.
 
+version 0.13
+date: 2011-06-19
+# minor improvement
+added: make the link _parent a weakref
+       sent by Graham Barr https://rt.cpan.org/Public/Bug/Display.html?id=68896
+
 version 0.12
 date:   2010-09-29
 # minor bug fix
 fix:    added getLocalName on elements
         see https://rt.cpan.org/Public/Bug/Display.html?id=61746
-        found and fixed by Miyagawa
+        found and fixed by Tokuhiro Matsuno
 added:  a few tests
 
 version 0.11
