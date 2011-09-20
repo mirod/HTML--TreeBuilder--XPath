@@ -1,7 +1,7 @@
 # This Makefile is for the HTML::TreeBuilder::XPath extension to perl.
 #
 # It was generated automatically by MakeMaker version
-# 6.57_05 (Revision: 65705) from the contents of
+# 6.58 (Revision: 65800) from the contents of
 # Makefile.PL. Don't edit this file, edit Makefile.PL instead.
 #
 #       ANY CHANGES MADE HERE WILL BE LOST!
@@ -14,6 +14,7 @@
 #     ABSTRACT_FROM => q[lib/HTML/TreeBuilder/XPath.pm]
 #     AUTHOR => [q[Michel Rodriguez <mrodrigu@localdomain>]]
 #     BUILD_REQUIRES => {  }
+#     CONFIGURE_REQUIRES => {  }
 #     LICENSE => q[perl]
 #     NAME => q[HTML::TreeBuilder::XPath]
 #     PREREQ_PM => { List::Util=>q[0], XML::XPathEngine=>q[0.12], HTML::TreeBuilder=>q[0] }
@@ -24,7 +25,7 @@
 
 # --- MakeMaker const_config section:
 
-# These definitions are from config.sh (via /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1/i686-linux/Config.pm).
+# These definitions are from config.sh (via /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/lib/5.15.1/i686-linux/Config.pm).
 # They may have been overridden via Makefile.PL or on the command line.
 AR = ar
 CC = cc
@@ -41,10 +42,10 @@ LIBC =
 LIB_EXT = .a
 OBJ_EXT = .o
 OSNAME = linux
-OSVERS = 2.6.38-8-generic-pae
+OSVERS = 2.6.38-10-generic-pae
 RANLIB = :
-SITELIBEXP = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/site_perl/5.14.1
-SITEARCHEXP = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/site_perl/5.14.1/i686-linux
+SITELIBEXP = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/lib/site_perl/5.15.1
+SITEARCHEXP = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/lib/site_perl/5.15.1/i686-linux
 SO = so
 VENDORARCHEXP = 
 VENDORLIBEXP = 
@@ -56,11 +57,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = HTML::TreeBuilder::XPath
 NAME_SYM = HTML_TreeBuilder_XPath
-VERSION = 0.12
+VERSION = 0.14
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_12
+VERSION_SYM = 0_14
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.12
+XS_VERSION = 0.14
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -74,55 +75,55 @@ MAN3EXT = 3
 INSTALLDIRS = site
 DESTDIR = 
 PREFIX = $(SITEPREFIX)
-PERLPREFIX = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1
-SITEPREFIX = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1
+PERLPREFIX = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1
+SITEPREFIX = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1
 VENDORPREFIX = 
-INSTALLPRIVLIB = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1
+INSTALLPRIVLIB = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/lib/5.15.1
 DESTINSTALLPRIVLIB = $(DESTDIR)$(INSTALLPRIVLIB)
-INSTALLSITELIB = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/site_perl/5.14.1
+INSTALLSITELIB = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/lib/site_perl/5.15.1
 DESTINSTALLSITELIB = $(DESTDIR)$(INSTALLSITELIB)
 INSTALLVENDORLIB = 
 DESTINSTALLVENDORLIB = $(DESTDIR)$(INSTALLVENDORLIB)
-INSTALLARCHLIB = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1/i686-linux
+INSTALLARCHLIB = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/lib/5.15.1/i686-linux
 DESTINSTALLARCHLIB = $(DESTDIR)$(INSTALLARCHLIB)
-INSTALLSITEARCH = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/site_perl/5.14.1/i686-linux
+INSTALLSITEARCH = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/lib/site_perl/5.15.1/i686-linux
 DESTINSTALLSITEARCH = $(DESTDIR)$(INSTALLSITEARCH)
 INSTALLVENDORARCH = 
 DESTINSTALLVENDORARCH = $(DESTDIR)$(INSTALLVENDORARCH)
-INSTALLBIN = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/bin
+INSTALLBIN = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/bin
 DESTINSTALLBIN = $(DESTDIR)$(INSTALLBIN)
-INSTALLSITEBIN = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/bin
+INSTALLSITEBIN = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/bin
 DESTINSTALLSITEBIN = $(DESTDIR)$(INSTALLSITEBIN)
 INSTALLVENDORBIN = 
 DESTINSTALLVENDORBIN = $(DESTDIR)$(INSTALLVENDORBIN)
-INSTALLSCRIPT = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/bin
+INSTALLSCRIPT = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/bin
 DESTINSTALLSCRIPT = $(DESTDIR)$(INSTALLSCRIPT)
-INSTALLSITESCRIPT = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/bin
+INSTALLSITESCRIPT = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/bin
 DESTINSTALLSITESCRIPT = $(DESTDIR)$(INSTALLSITESCRIPT)
 INSTALLVENDORSCRIPT = 
 DESTINSTALLVENDORSCRIPT = $(DESTDIR)$(INSTALLVENDORSCRIPT)
-INSTALLMAN1DIR = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/man/man1
+INSTALLMAN1DIR = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/man/man1
 DESTINSTALLMAN1DIR = $(DESTDIR)$(INSTALLMAN1DIR)
-INSTALLSITEMAN1DIR = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/man/man1
+INSTALLSITEMAN1DIR = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/man/man1
 DESTINSTALLSITEMAN1DIR = $(DESTDIR)$(INSTALLSITEMAN1DIR)
 INSTALLVENDORMAN1DIR = 
 DESTINSTALLVENDORMAN1DIR = $(DESTDIR)$(INSTALLVENDORMAN1DIR)
-INSTALLMAN3DIR = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/man/man3
+INSTALLMAN3DIR = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/man/man3
 DESTINSTALLMAN3DIR = $(DESTDIR)$(INSTALLMAN3DIR)
-INSTALLSITEMAN3DIR = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/man/man3
+INSTALLSITEMAN3DIR = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/man/man3
 DESTINSTALLSITEMAN3DIR = $(DESTDIR)$(INSTALLSITEMAN3DIR)
 INSTALLVENDORMAN3DIR = 
 DESTINSTALLVENDORMAN3DIR = $(DESTDIR)$(INSTALLVENDORMAN3DIR)
-PERL_LIB = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1
-PERL_ARCHLIB = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1/i686-linux
+PERL_LIB = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/lib/5.15.1
+PERL_ARCHLIB = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/lib/5.15.1/i686-linux
 LIBPERL_A = libperl.a
 FIRST_MAKEFILE = Makefile
 MAKEFILE_OLD = Makefile.old
 MAKE_APERL_FILE = Makefile.aperl
 PERLMAINCC = $(CC)
-PERL_INC = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1/i686-linux/CORE
-PERL = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/bin/perl5.14.1
-FULLPERL = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/bin/perl5.14.1
+PERL_INC = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/lib/5.15.1/i686-linux/CORE
+PERL = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/bin/perl5.15.1
+FULLPERL = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/bin/perl5.15.1
 ABSPERL = $(PERL)
 PERLRUN = $(PERL)
 FULLPERLRUN = $(FULLPERL)
@@ -135,9 +136,9 @@ PERM_DIR = 755
 PERM_RW = 644
 PERM_RWX = 755
 
-MAKEMAKER   = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/lib/5.14.1/ExtUtils/MakeMaker.pm
-MM_VERSION  = 6.57_05
-MM_REVISION = 65705
+MAKEMAKER   = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/lib/5.15.1/ExtUtils/MakeMaker.pm
+MM_VERSION  = 6.58
+MM_REVISION = 65800
 
 # FULLEXT = Pathname for extension directory (eg Foo/Bar/Oracle).
 # BASEEXT = Basename part of FULLEXT. May be just equal FULLEXT. (eg Oracle)
@@ -196,7 +197,7 @@ PM_TO_BLIB = XPath_with_as_XML_clean.pm \
 
 
 # --- MakeMaker platform_constants section:
-MM_Unix_VERSION = 6.57_05
+MM_Unix_VERSION = 6.58
 PERL_MALLOC_DEF = -DPERL_EXTMALLOC_DEF -Dmalloc=Perl_malloc -Dfree=Perl_mfree -Drealloc=Perl_realloc -Dcalloc=Perl_calloc
 
 
@@ -261,7 +262,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = HTML-TreeBuilder-XPath
-DISTVNAME = HTML-TreeBuilder-XPath-0.12
+DISTVNAME = HTML-TreeBuilder-XPath-0.14
 
 
 # --- MakeMaker macro section:
@@ -448,18 +449,19 @@ clean :: clean_subdirs
 	  *$(LIB_EXT) core \
 	  core.[0-9] $(INST_ARCHAUTODIR)/extralibs.all \
 	  core.[0-9][0-9] $(BASEEXT).bso \
-	  pm_to_blib.ts core.[0-9][0-9][0-9][0-9] \
-	  MYMETA.yml $(BASEEXT).x \
-	  $(BOOTSTRAP) perl$(EXE_EXT) \
-	  tmon.out *$(OBJ_EXT) \
-	  pm_to_blib $(INST_ARCHAUTODIR)/extralibs.ld \
-	  blibdirs.ts core.[0-9][0-9][0-9][0-9][0-9] \
-	  *perl.core core.*perl.*.? \
-	  $(MAKE_APERL_FILE) perl \
-	  $(BASEEXT).def core.[0-9][0-9][0-9] \
-	  mon.out lib$(BASEEXT).def \
-	  perlmain.c perl.exe \
-	  so_locations $(BASEEXT).exp 
+	  pm_to_blib.ts MYMETA.json \
+	  core.[0-9][0-9][0-9][0-9] MYMETA.yml \
+	  $(BASEEXT).x $(BOOTSTRAP) \
+	  perl$(EXE_EXT) tmon.out \
+	  *$(OBJ_EXT) pm_to_blib \
+	  $(INST_ARCHAUTODIR)/extralibs.ld blibdirs.ts \
+	  core.[0-9][0-9][0-9][0-9][0-9] *perl.core \
+	  core.*perl.*.? $(MAKE_APERL_FILE) \
+	  $(BASEEXT).def perl \
+	  core.[0-9][0-9][0-9] mon.out \
+	  lib$(BASEEXT).def perlmain.c \
+	  perl.exe so_locations \
+	  $(BASEEXT).exp 
 	- $(RM_RF) \
 	  blib 
 	- $(MV) $(FIRST_MAKEFILE) $(MAKEFILE_OLD) $(DEV_NULL)
@@ -482,31 +484,76 @@ realclean purge ::  clean realclean_subdirs
 # --- MakeMaker metafile section:
 metafile : create_distdir
 	$(NOECHO) $(ECHO) Generating META.yml
-	$(NOECHO) $(ECHO) '--- #YAML:1.0' > META_new.yml
-	$(NOECHO) $(ECHO) 'name:               HTML-TreeBuilder-XPath' >> META_new.yml
-	$(NOECHO) $(ECHO) 'version:            0.12' >> META_new.yml
-	$(NOECHO) $(ECHO) 'abstract:           add XPath support to HTML::TreeBuilder' >> META_new.yml
+	$(NOECHO) $(ECHO) '---' > META_new.yml
+	$(NOECHO) $(ECHO) 'abstract: '\''add XPath support to HTML::TreeBuilder'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'author:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    - Michel Rodriguez <mrodrigu@localdomain>' >> META_new.yml
-	$(NOECHO) $(ECHO) 'license:            perl' >> META_new.yml
-	$(NOECHO) $(ECHO) 'distribution_type:  module' >> META_new.yml
-	$(NOECHO) $(ECHO) 'configure_requires:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    ExtUtils::MakeMaker:  0' >> META_new.yml
+	$(NOECHO) $(ECHO) '  - '\''Michel Rodriguez <mrodrigu@localdomain>'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'build_requires:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    ExtUtils::MakeMaker:  0' >> META_new.yml
-	$(NOECHO) $(ECHO) 'requires:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    HTML::TreeBuilder:  0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    List::Util:         0' >> META_new.yml
-	$(NOECHO) $(ECHO) '    XML::XPathEngine:   0.12' >> META_new.yml
-	$(NOECHO) $(ECHO) 'no_index:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    directory:' >> META_new.yml
-	$(NOECHO) $(ECHO) '        - t' >> META_new.yml
-	$(NOECHO) $(ECHO) '        - inc' >> META_new.yml
-	$(NOECHO) $(ECHO) 'generated_by:       ExtUtils::MakeMaker version 6.57_05' >> META_new.yml
+	$(NOECHO) $(ECHO) '  ExtUtils::MakeMaker: 0' >> META_new.yml
+	$(NOECHO) $(ECHO) 'configure_requires:' >> META_new.yml
+	$(NOECHO) $(ECHO) '  ExtUtils::MakeMaker: 0' >> META_new.yml
+	$(NOECHO) $(ECHO) 'dynamic_config: 1' >> META_new.yml
+	$(NOECHO) $(ECHO) 'generated_by: '\''ExtUtils::MakeMaker version 6.58, CPAN::Meta::Converter version 2.110930001'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'license: perl' >> META_new.yml
 	$(NOECHO) $(ECHO) 'meta-spec:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    url:      http://module-build.sourceforge.net/META-spec-v1.4.html' >> META_new.yml
-	$(NOECHO) $(ECHO) '    version:  1.4' >> META_new.yml
+	$(NOECHO) $(ECHO) '  url: http://module-build.sourceforge.net/META-spec-v1.4.html' >> META_new.yml
+	$(NOECHO) $(ECHO) '  version: 1.4' >> META_new.yml
+	$(NOECHO) $(ECHO) 'name: HTML-TreeBuilder-XPath' >> META_new.yml
+	$(NOECHO) $(ECHO) 'no_index:' >> META_new.yml
+	$(NOECHO) $(ECHO) '  directory:' >> META_new.yml
+	$(NOECHO) $(ECHO) '    - t' >> META_new.yml
+	$(NOECHO) $(ECHO) '    - inc' >> META_new.yml
+	$(NOECHO) $(ECHO) 'requires:' >> META_new.yml
+	$(NOECHO) $(ECHO) '  HTML::TreeBuilder: 0' >> META_new.yml
+	$(NOECHO) $(ECHO) '  List::Util: 0' >> META_new.yml
+	$(NOECHO) $(ECHO) '  XML::XPathEngine: 0.12' >> META_new.yml
+	$(NOECHO) $(ECHO) 'version: 0.14' >> META_new.yml
 	-$(NOECHO) $(MV) META_new.yml $(DISTVNAME)/META.yml
+	$(NOECHO) $(ECHO) Generating META.json
+	$(NOECHO) $(ECHO) '{' > META_new.json
+	$(NOECHO) $(ECHO) '   "abstract" : "add XPath support to HTML::TreeBuilder",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "author" : [' >> META_new.json
+	$(NOECHO) $(ECHO) '      "Michel Rodriguez <mrodrigu@localdomain>"' >> META_new.json
+	$(NOECHO) $(ECHO) '   ],' >> META_new.json
+	$(NOECHO) $(ECHO) '   "dynamic_config" : 1,' >> META_new.json
+	$(NOECHO) $(ECHO) '   "generated_by" : "ExtUtils::MakeMaker version 6.58, CPAN::Meta::Converter version 2.110930001",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "license" : [' >> META_new.json
+	$(NOECHO) $(ECHO) '      "perl_5"' >> META_new.json
+	$(NOECHO) $(ECHO) '   ],' >> META_new.json
+	$(NOECHO) $(ECHO) '   "meta-spec" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",' >> META_new.json
+	$(NOECHO) $(ECHO) '      "version" : "2"' >> META_new.json
+	$(NOECHO) $(ECHO) '   },' >> META_new.json
+	$(NOECHO) $(ECHO) '   "name" : "HTML-TreeBuilder-XPath",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "no_index" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '      "directory" : [' >> META_new.json
+	$(NOECHO) $(ECHO) '         "t",' >> META_new.json
+	$(NOECHO) $(ECHO) '         "inc"' >> META_new.json
+	$(NOECHO) $(ECHO) '      ]' >> META_new.json
+	$(NOECHO) $(ECHO) '   },' >> META_new.json
+	$(NOECHO) $(ECHO) '   "prereqs" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '      "build" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '         "requires" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '            "ExtUtils::MakeMaker" : 0' >> META_new.json
+	$(NOECHO) $(ECHO) '         }' >> META_new.json
+	$(NOECHO) $(ECHO) '      },' >> META_new.json
+	$(NOECHO) $(ECHO) '      "configure" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '         "requires" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '            "ExtUtils::MakeMaker" : 0' >> META_new.json
+	$(NOECHO) $(ECHO) '         }' >> META_new.json
+	$(NOECHO) $(ECHO) '      },' >> META_new.json
+	$(NOECHO) $(ECHO) '      "runtime" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '         "requires" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '            "HTML::TreeBuilder" : 0,' >> META_new.json
+	$(NOECHO) $(ECHO) '            "List::Util" : 0,' >> META_new.json
+	$(NOECHO) $(ECHO) '            "XML::XPathEngine" : "0.12"' >> META_new.json
+	$(NOECHO) $(ECHO) '         }' >> META_new.json
+	$(NOECHO) $(ECHO) '      }' >> META_new.json
+	$(NOECHO) $(ECHO) '   },' >> META_new.json
+	$(NOECHO) $(ECHO) '   "release_status" : "stable",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "version" : "0.14"' >> META_new.json
+	$(NOECHO) $(ECHO) '}' >> META_new.json
+	-$(NOECHO) $(MV) META_new.json $(DISTVNAME)/META.json
 
 
 # --- MakeMaker signature section:
@@ -598,8 +645,12 @@ ci :
 
 # --- MakeMaker distmeta section:
 distmeta : create_distdir metafile
-	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'eval { maniadd({q{META.yml} => q{Module meta-data (added by MakeMaker)}}) } ' \
+	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'exit unless -e q{META.yml};' \
+	  -e 'eval { maniadd({q{META.yml} => q{Module YAML meta-data (added by MakeMaker)}}) }' \
 	  -e '    or print "Could not add META.yml to MANIFEST: $${'\''@'\''}\n"' --
+	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'exit unless -f q{META.json};' \
+	  -e 'eval { maniadd({q{META.json} => q{Module JSON meta-data (added by MakeMaker)}}) }' \
+	  -e '    or print "Could not add META.json to MANIFEST: $${'\''@'\''}\n"' --
 
 
 
@@ -752,7 +803,7 @@ $(FIRST_MAKEFILE) : Makefile.PL $(CONFIGDEP)
 
 # --- MakeMaker makeaperl section ---
 MAP_TARGET    = perl
-FULLPERL      = /home/mrodrigu/perl5/perlbrew/perls/perl-5.14.1/bin/perl5.14.1
+FULLPERL      = /home/mrodrigu/perl5/perlbrew/perls/perl-5.15.1/bin/perl5.15.1
 
 $(MAP_TARGET) :: static $(MAKE_APERL_FILE)
 	$(MAKE) $(USEMAKEFILE) $(MAKE_APERL_FILE) $@
@@ -796,14 +847,14 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0.12">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0.14">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>add XPath support to HTML::TreeBuilder</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Michel Rodriguez &lt;mrodrigu@localdomain&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="HTML::TreeBuilder" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="List::Util" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="XML::XPathEngine" VERSION="0.12" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="i686-linux-5.14" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="i686-linux-5.15" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '</SOFTPKG>' >> $(DISTNAME).ppd

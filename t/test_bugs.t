@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use HTML::TreeBuilder::XPath;
-use Test::More tests => 6;
+use Test::More tests => 7;
 
 use utf8;
 
@@ -32,3 +32,9 @@ foreach my $p ($tree->findnodes("//p"))
     is( $p->as_XML_compact, "<p>$as_xml</p>", "p as_XML_compact");
     is( ($p->findnodes( './node()[1]'))[0]->as_XML_indented, $as_xml, "text node as_XML()");
   }
+
+{ my $t=  HTML::TreeBuilder->new;
+  $t->store_comments( 1);
+  $t->parse( '<html><head></head><body><!-- my comment --><p>not a comment</p><!-- more comment --></body></html>');
+  is( $t->findvalue( '/html/body/comment()'), ' my comment  more comment ', 'comment value');
+}

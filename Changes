@@ -1,6 +1,12 @@
 $Id: /html-treebuilder-xpath/Changes 40 2006-05-15T07:42:34.182385Z mrodrigu  $
 Revision history for Perl extension HTML::TreeBuilder::XPath.
 
+version 0.14
+date: 2011-09-20
+# bug fix
+fix:   comment() did not work, as the text was in {text} not {_text}
+       report and initial patch by perlover
+
 version 0.13
 date: 2011-06-19
 # minor improvement
