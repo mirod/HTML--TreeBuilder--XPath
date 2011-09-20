@@ -630,13 +630,17 @@ L<HTML::TreeBuilder>
 
 L<XML::XPathEngine>
 
+=head1 REPOSITORY
+
+L<https://github.com/mirod/HTML--TreeBuilder--XPath>
+
 =head1 AUTHOR
 
 Michel Rodriguez, E<lt>mirod@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2006 by Michel Rodriguez
+Copyright (C) 2006-2011 by Michel Rodriguez
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.4 or,
