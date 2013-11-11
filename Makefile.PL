@@ -14,4 +14,14 @@ WriteMakefile(
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (ABSTRACT_FROM  => 'lib/HTML/TreeBuilder/XPath.pm', # retrieve abstract from module
        AUTHOR         => 'Michel Rodriguez <mrodrigu@localdomain>') : ()),
+    META_MERGE        => {
+        'meta-spec' => { version => 2 },
+        resources => {
+            repository => {
+                type => 'git',
+                url  => 'https://github.com/mirod/HTML--TreeBuilder--XPath.git',
+                web  => 'https://github.com/mirod/HTML--TreeBuilder--XPath',
+            },
+        },
+    },
 );
