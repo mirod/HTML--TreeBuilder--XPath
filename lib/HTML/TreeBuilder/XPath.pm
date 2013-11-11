@@ -616,7 +616,7 @@ I added a new method, that can be used as a simple replacement for it.
 It escapes only the '<', '>' and '&' (plus '"' in attribute values), and
 wraps CDATA elements in CDATA sections.
 
-Note that the XML is actually not garanteed to be valid at this point. Nothing
+Note that the XML is actually not guaranteed to be valid at this point. Nothing
 is done about the encoding of the string. Patches or just ideas of how it could
 work are welcome.
 
