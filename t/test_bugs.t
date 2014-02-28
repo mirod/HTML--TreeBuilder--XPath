@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use HTML::TreeBuilder::XPath;
-use Test::More tests => 7;
+use Test::More tests => 8;
 
 use utf8;
 
@@ -37,4 +37,15 @@ foreach my $p ($tree->findnodes("//p"))
   $t->store_comments( 1);
   $t->parse( '<html><head></head><body><!-- my comment --><p>not a comment</p><!-- more comment --></body></html>');
   is( $t->findvalue( '/html/body/comment()'), ' my comment  more comment ', 'comment value');
+}
+
+# test bug #90164: as_XML_indented omits contents of script tag
+# the bug affects also the style, xmp, listing and plaintext tags (%HTML::Tagset::isCDATA_Parent).
+{
+my $html='<script>script content</script>';
+my $tree  = HTML::TreeBuilder->new_from_content($html);
+my $tree_indent = HTML::TreeBuilder::XPath->new_from_content($tree->as_XML_indented);
+like($tree_indent->findvalue('/html/head/script/text()'), qr/^\s*script content\s*$/, "bug #90164");
+$tree->delete;
+$tree_indent->delete;
 }

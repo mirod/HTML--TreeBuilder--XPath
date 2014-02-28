@@ -288,7 +288,7 @@ sub toString { return shift->as_XML( @_); }
       my $content='';
 
       if( $HTML::Tagset::isCDATA_Parent{$lc_name})
-        { my $content= $node->{_content} || '';
+        { $content= $node->{_content} || '';
           if( ref $content && (ref $content eq 'ARRAY' || $content->isa( 'ARRAY') ))
             { $content= _xml_escape_cdata( join( '', @$content), $opt); }
         }
